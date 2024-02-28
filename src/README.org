@@ -2,8 +2,8 @@
 #+author: c6es6r
 
 * Über Dieses Projekt
-Dieses Projekt wurde im Rahmen einer Projekt Arbeit in der Schule erstellt.
-Ab dem 12.03.2024 ist es jedem freigestellt an der Entwicklung des Projekts mitzuarbeiten.
+Dieses Projekt wird im Rahmen einer Projekt Arbeit in der Schule erstellt.
+Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteiligen.
 
 * Nutzung
 ** Dependencies
