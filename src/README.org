@@ -5,6 +5,12 @@
 Dieses Projekt wird im Rahmen einer Projekt Arbeit in der Schule erstellt.
 Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteiligen.
 
+* TODO
++ [ ] Gegner
++ [ ] Punktesystem
++ [ ] Grafiken verbessern
++ [ ] ggf. Movement verbessern
+
 * Nutzung
 ** Dependencies
 Das einzige benötigte Paket ist *pygame*.
