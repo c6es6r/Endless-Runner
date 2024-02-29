@@ -22,12 +22,19 @@ def draw():
         sprites.add(i)
     sprites.draw(screen)
 
+def collision():
+    for i in enemies:
+        if player.rect.colliderect(i.rect):
+            enemies.remove(i)
+            player.lives -= 1
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     screen.blit(pygame.image.load("img/background.png"), (0, 0))
+    screen.blit(pygame.font.SysFont(None, 24).render(str(player.lives), True, (0, 0, 0)), (10, 10))
 
     player.movement()
 
@@ -37,6 +44,7 @@ while running:
 
         i.movement()
 
+    collision()
     draw()
 
     pygame.display.update()

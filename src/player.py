@@ -16,6 +16,8 @@ class Player(pygame.sprite.Sprite):
         self.current_keys = []
         self.previous_keys = []
 
+        self.lives = 3
+
     def movement(self):
         self.velocity = pygame.Vector2()
         self.position.y += 4
