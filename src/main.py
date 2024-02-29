@@ -38,7 +38,7 @@ def spawn_enemy():
     global interval
 
     if interval >= 1250:
-        interval -= 50
+        interval -= 100
 
     for i in enemies:
         i.speed += 2
@@ -57,8 +57,7 @@ while running:
         running = False
 
     screen.blit(background, (0, 0))
-    screen.blit(pygame.font.SysFont(None, 48).render(f"LIVES: {str(player.lives)}", True, (0, 0, 0)), (10, 10))
-    screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 58))
+    screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
 
     removed_enemies = []
 
