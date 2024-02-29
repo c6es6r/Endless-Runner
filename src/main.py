@@ -12,10 +12,11 @@ clock = pygame.time.Clock()
 
 player = player.Player()
 enemies = [enemy.Enemy()]
+removed_enemies = []
+background = pygame.image.load("img/background.png")
 
 interval = 3000
 
-running = True
 
 def draw():
     sprites = pygame.sprite.Group()
@@ -25,9 +26,10 @@ def draw():
     sprites.draw(screen)
 
 def collision():
+    global removed_enemies
     for i in enemies:
         if player.rect.colliderect(i.rect):
-            enemies.remove(i)
+            removed_enemies.append(i)
             player.lives -= 1
 
 def spawn_enemy():
@@ -44,13 +46,17 @@ def spawn_enemy():
 
 last_time = pygame.time.get_ticks()
 
+running = True
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    screen.blit(pygame.image.load("img/background.png"), (0, 0))
+    screen.blit(background, (0, 0))
     screen.blit(pygame.font.SysFont(None, 48).render(str(player.lives), True, (0, 0, 0)), (10, 10))
+
+    removed_enemies = []
 
     player.movement()
 
@@ -70,6 +76,9 @@ while running:
     if current_time - last_time >= interval:
         spawn_enemy()
         last_time = current_time
+
+    for i in removed_enemies:
+        enemies.remove(i)
 
     pygame.display.update()
     clock.tick(config.FPS)

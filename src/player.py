@@ -6,7 +6,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.speed = 192
-        self.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.SCREEN_HEIGHT/1.25)
+        self.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.SCREEN_HEIGHT/1.125)
         self.velocity = pygame.Vector2()
         self.image = pygame.image.load("img/player.png")
         self.image = pygame.transform.scale(self.image, (64, 64))
@@ -28,8 +28,8 @@ class Player(pygame.sprite.Sprite):
             self.velocity.y -= self.speed
 
         # check out of bounds
-        if self.position.y > config.SCREEN_HEIGHT/1.25:
-            self.position.y = config.SCREEN_HEIGHT/1.25
+        if self.position.y > config.SCREEN_HEIGHT/1.125:
+            self.position.y = config.SCREEN_HEIGHT/1.125
 
         self.position += self.velocity
         self.rect = self.base.get_rect(center=self.position)
