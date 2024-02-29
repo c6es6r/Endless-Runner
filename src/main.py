@@ -75,8 +75,6 @@ while running:
 
     current_time = pygame.time.get_ticks()
 
-    print(interval)
-
     if current_time - last_spawn_time >= interval:
         spawn_enemy()
         last_spawn_time = current_time
