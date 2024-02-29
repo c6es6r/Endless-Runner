@@ -6,7 +6,7 @@ class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.speed = 8
-        self.position = pygame.Vector2(config.SCREEN_WIDTH, config.SCREEN_HEIGHT/1.125)
+        self.position = pygame.Vector2(config.SCREEN_WIDTH, config.COLLISION_HEIGHT)
         self.velocity = pygame.Vector2()
         self.image = pygame.image.load("img/enemy.png")
         self.image = pygame.transform.scale(self.image, (64, 64))

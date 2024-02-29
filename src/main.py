@@ -43,8 +43,8 @@ def spawn_enemy():
     for i in enemies:
         i.speed += 2
 
-
-last_time = pygame.time.get_ticks()
+last_spawn_time = pygame.time.get_ticks()
+last_score_time = pygame.time.get_ticks()
 
 running = True
 
@@ -53,8 +53,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    if player.lives <= 0:
+        running = False
+
     screen.blit(background, (0, 0))
-    screen.blit(pygame.font.SysFont(None, 48).render(str(player.lives), True, (0, 0, 0)), (10, 10))
+    screen.blit(pygame.font.SysFont(None, 48).render(f"LIVES: {str(player.lives)}", True, (0, 0, 0)), (10, 10))
+    screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 58))
 
     removed_enemies = []
 
@@ -73,12 +77,18 @@ while running:
 
     print(interval)
 
-    if current_time - last_time >= interval:
+    if current_time - last_spawn_time >= interval:
         spawn_enemy()
-        last_time = current_time
+        last_spawn_time = current_time
+
+    if current_time - last_score_time >= 500:
+        player.score += 1
+        last_score_time = current_time
+
 
     for i in removed_enemies:
         enemies.remove(i)
+
 
     pygame.display.update()
     clock.tick(config.FPS)
