@@ -5,7 +5,7 @@ import config
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.speed = 128
+        self.speed = 192
         self.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.SCREEN_HEIGHT/1.25)
         self.velocity = pygame.Vector2()
         self.image = pygame.image.load("img/player.png")
