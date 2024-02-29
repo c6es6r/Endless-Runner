@@ -8,6 +8,8 @@ Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteilig
 * TODO
 + [X] Spieler
 + [ ] Gegner
++ [ ] Collision
++ [ ] Spawning
 + [ ] Punktesystem
 + [ ] Grafiken verbessern
 + [ ] ggf. Movement verbessern
