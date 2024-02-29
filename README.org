@@ -7,7 +7,7 @@ Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteilig
 
 * TODO
 + [X] Spieler
-+ [ ] Gegner
++ [X] Gegner
 + [ ] Collision
 + [ ] Spawning
 + [ ] Punktesystem
