@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 player = player.Player()
 enemies = [enemy.Enemy()]
 removed_enemies = []
-background = pygame.image.load("img/background.png")
+background = pygame.image.load("img/background.png").convert() # convert: +20fps
 
 hi_score = 0
 
@@ -72,7 +72,6 @@ while running:
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_r]:
-            print("e")
             player.score = 0
             player.lives = 1
             enemies = [enemy.Enemy()]
@@ -92,6 +91,7 @@ while running:
     else:
         screen.blit(background, (0, 0))
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
+        screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
 
         removed_enemies = []
 
@@ -99,7 +99,7 @@ while running:
 
         for i in enemies:
             if i.position.x < 0:
-                enemies.remove(i)
+                removed_enemies.append(i)
 
             i.movement()
 
@@ -119,7 +119,6 @@ while running:
 
         for i in removed_enemies:
             enemies.remove(i)
-
 
         pygame.display.update()
         clock.tick(config.FPS)
