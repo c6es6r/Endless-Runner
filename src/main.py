@@ -93,6 +93,9 @@ while running:
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
         screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
 
+        if pygame.key.get_pressed()[pygame.K_q]:
+            running = False
+
         removed_enemies = []
 
         player.movement()
