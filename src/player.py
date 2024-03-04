@@ -21,12 +21,14 @@ class Player(pygame.sprite.Sprite):
 
     def movement(self):
         self.velocity = pygame.Vector2()
-        self.position.y += 4
+        self.velocity.y += 4
 
         self.current_keys = pygame.key.get_pressed()
 
-        if self.current_keys[pygame.K_SPACE] and self.previous_keys[pygame.K_SPACE] == False and self.position.y >= config.COLLISION_HEIGHT:
+        #                                    V and self.previous_keys[pygame.K_SPACE] == False 
+        if self.current_keys[pygame.K_SPACE] and config.COLLISION_HEIGHT <= self.position.y and self.position.y >= config.COLLISION_HEIGHT-400:
             self.velocity.y -= self.speed
+
 
         # check out of bounds
         if self.position.y > config.COLLISION_HEIGHT:
