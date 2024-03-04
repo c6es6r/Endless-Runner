@@ -23,10 +23,9 @@ class Player(pygame.sprite.Sprite):
         self.velocity = pygame.Vector2()
         self.velocity.y += 4
 
-        self.current_keys = pygame.key.get_pressed()
+        self.current_keys = pygame.key.get_pressed()      
 
-        #                                    V and self.previous_keys[pygame.K_SPACE] == False 
-        if self.current_keys[pygame.K_SPACE] and config.COLLISION_HEIGHT <= self.position.y and self.position.y >= config.COLLISION_HEIGHT-400:
+        if self.current_keys[pygame.K_SPACE] and self.previous_keys[pygame.K_SPACE] == False and self.position.y >= config.COLLISION_HEIGHT:
             self.velocity.y -= self.speed
 
 
@@ -36,5 +35,4 @@ class Player(pygame.sprite.Sprite):
 
         self.position += self.velocity
         self.rect = self.base.get_rect(center=self.position)
-
         self.previous_keys = self.current_keys
