@@ -14,6 +14,7 @@ player = player.Player()
 enemies = [enemy.Enemy()]
 removed_enemies = []
 background = pygame.image.load("img/background.png").convert() # convert: +20fps
+background = pygame.transform.scale(background, (1280, 720))
 
 hi_score = 0
 
