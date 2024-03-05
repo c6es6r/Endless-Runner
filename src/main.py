@@ -2,19 +2,20 @@ import pygame
 import sys
 
 import config
+
 import player
 import enemy
+import background
 
 pygame.init()
 
-screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
+screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT), pygame. RESIZABLE)
 clock = pygame.time.Clock()
 
 player = player.Player()
 enemies = [enemy.Enemy()]
 removed_enemies = []
-background = pygame.image.load("img/background.png").convert() # convert: +20fps
-background = pygame.transform.scale(background, (1280, 720))
+background = background.Background()
 
 hi_score = 0
 
@@ -90,10 +91,6 @@ while running:
         pygame.display.update()
 
     else:
-        screen.blit(background, (0, 0))
-        screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
-        screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
-
         if pygame.key.get_pressed()[pygame.K_q]:
             running = False
 
@@ -108,6 +105,12 @@ while running:
             i.movement()
 
         collision()
+
+
+        background.draw(screen)
+        screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
+        screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
+
         draw()
 
         current_time = pygame.time.get_ticks()
@@ -123,6 +126,9 @@ while running:
 
         for i in removed_enemies:
             enemies.remove(i)
+
+
+        background.update()
 
         pygame.display.update()
         clock.tick(config.FPS)
