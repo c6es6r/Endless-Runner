@@ -100,10 +100,6 @@ while running:
         pygame.display.update()
 
     else:
-        print(hi_score)
-
-
-
         if pygame.key.get_pressed()[pygame.K_q]:
             running = False
 
