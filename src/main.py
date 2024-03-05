@@ -18,6 +18,7 @@ removed_enemies = []
 background = background.Background()
 
 hi_score = 0
+last_hi_score = 0
 
 interval = 3000
 
@@ -46,6 +47,18 @@ def spawn_enemy():
     for i in enemies:
         i.speed += 2
 
+def get_last_hi_score():
+    try:
+        with open("data/scores.txt", "r") as file:
+            last_hi_score = int(file.read())
+    except ValueError:
+        last_hi_score = 0
+
+def save_score():
+    if hi_score > last_hi_score:
+        with open("data/scores.txt", "w") as file:
+            file.write(str(hi_score))
+
 last_spawn_time = pygame.time.get_ticks()
 last_score_time = pygame.time.get_ticks()
 
@@ -62,8 +75,12 @@ while running:
         game_over = True
 
     if game_over:
+        get_last_hi_score()
         if player.score > hi_score:
             hi_score = player.score
+
+        if last_hi_score > hi_score:
+            hi_score = last_hi_score
 
         screen.fill((0, 0, 0))
         screen.blit(pygame.font.SysFont(None, 48).render(f"HI-SCORE: {hi_score}", True, (0, 255, 0)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/4))
@@ -86,6 +103,7 @@ while running:
             game_over = False
 
         if keys[pygame.K_q]:
+            save_score()
             running = False
 
         pygame.display.update()
