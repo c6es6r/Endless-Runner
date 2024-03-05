@@ -5,3 +5,6 @@ run:
 
 clean:
 	rm -r src/__pycache__
+
+line_count:
+	wc -l src/*.py
