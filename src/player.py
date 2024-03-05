@@ -5,7 +5,7 @@ import config
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.speed = 192
+        self.jump_power = 192
         self.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
         self.velocity = pygame.Vector2()
         self.image = pygame.image.load("img/player.png")
@@ -26,7 +26,10 @@ class Player(pygame.sprite.Sprite):
         self.current_keys = pygame.key.get_pressed()
 
         if self.current_keys[pygame.K_SPACE] and self.previous_keys[pygame.K_SPACE] == False and self.position.y >= config.COLLISION_HEIGHT:
-            self.velocity.y -= self.speed
+            self.velocity.y -= self.jump_power
+
+        if self.current_keys[pygame.K_DOWN] or self.current_keys[pygame.K_s]:
+            self.velocity.y += 4
 
         # check out of bounds
         if self.position.y > config.COLLISION_HEIGHT:

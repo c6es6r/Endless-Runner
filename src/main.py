@@ -17,7 +17,7 @@ enemies = [enemy.Enemy()]
 removed_enemies = []
 background = background.Background()
 
-interval = 2500
+interval = 3000
 min_interval = 600
 
 def draw():
@@ -46,7 +46,7 @@ def spawn_enemy():
         interval = min_interval
 
     for i in enemies:
-        i.speed += 10
+        i.speed += 5
 
 def get_last_hi_score():
     try:
