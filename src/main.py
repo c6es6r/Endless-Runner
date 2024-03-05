@@ -76,6 +76,8 @@ while running:
         if player.score > hi_score:
             hi_score = player.score
 
+        player.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
+
         screen.fill((0, 0, 0))
         screen.blit(pygame.font.SysFont(None, 48).render(f"HI-SCORE: {hi_score}", True, (0, 255, 0)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/4))
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {player.score}", True, (0, 0, 255)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/3))
