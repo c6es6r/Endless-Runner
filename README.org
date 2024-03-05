@@ -18,6 +18,12 @@ python3 src/main.py
 
 Gegebenenfalls muss die *3* weggelassen werden.
 
+** Aufräumen
+Um die beim spielen erzeugten Cache-Dateien zu entfernen, einfach folgenden Befehl nutzen.
+#+begin_src shell
+make clean
+#+end_src
+
 ** Spielen
 Die einzige Taste die zum Spiel gebraucht wird ist die *SPACE*-Taste. Mit ihr springt der Spieler nach oben.
 Ziel des Spiels ist es den anfliegenden Gegnern auszuweichen. Für jeden Gegner, dem ausgewichen wurde, gibt es einen Punkt.
