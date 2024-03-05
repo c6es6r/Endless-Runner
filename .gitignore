@@ -7,3 +7,5 @@ tmp/
 *.egg
 build
 htmlcov
+
+data/scores.txt
