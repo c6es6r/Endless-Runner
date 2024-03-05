@@ -94,7 +94,7 @@ while running:
 
         if keys[pygame.K_q]:
             with open("data/scores.txt", "w") as file:
-                file.write(str(player.score))
+                file.write(str(hi_score))
             running = False
 
         pygame.display.update()
