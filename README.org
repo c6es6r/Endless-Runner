@@ -7,16 +7,17 @@ Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteilig
 
 * Nutzung
 ** Ausführen
-Das Projekt kann einfach mit dem *make* Befehl ausgeführt werden.
+*** Dependencies
+Das einzige benötigte Paket ist *pygame*.
+
+*** Spiel Starten
+Das Spiel kann einfach mit dem *make* Befehl ausgeführt werden.
 Falls dieser nicht funktioniert, kann der folgende Befehl genutzt werden:
 #+begin_src shell
 python3 src/main.py
 #+end_src
 
 Gegebenenfalls muss die *3* weggelassen werden.
-
-*** Dependencies
-Das einzige benötigte Paket ist *pygame*.
 
 ** Aufräumen
 Um die beim spielen erzeugten Cache-Dateien zu entfernen, einfach folgenden Befehl nutzen.
