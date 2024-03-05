@@ -17,8 +17,4 @@ class Enemy(pygame.sprite.Sprite):
         self.velocity = pygame.Vector2()
         self.position.x -= self.speed
 
-        # check out of bounds
-        if self.position.x > config.SCREEN_WIDTH:
-            pass
-
         self.rect = self.base.get_rect(center=self.position)
