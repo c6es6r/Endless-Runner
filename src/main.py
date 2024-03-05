@@ -17,7 +17,8 @@ enemies = [enemy.Enemy()]
 removed_enemies = []
 background = background.Background()
 
-interval = 3000
+interval = 2500
+min_interval = 600
 
 def draw():
     sprites = pygame.sprite.Group()
@@ -38,11 +39,14 @@ def spawn_enemy():
 
     global interval
 
-    if interval >= 1250:
+    if interval > min_interval:
         interval -= 100
 
+    elif interval < min_interval:
+        interval = min_interval
+
     for i in enemies:
-        i.speed += 2
+        i.speed += 10
 
 def get_last_hi_score():
     try:
@@ -114,7 +118,6 @@ while running:
             i.movement()
 
         collision()
-
 
         background.draw(screen)
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
