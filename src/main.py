@@ -95,7 +95,6 @@ while running:
         if keys[pygame.K_SPACE]:
             tutorial = False
 
-
     if player.lives <= 0:
         game_over = True
 
