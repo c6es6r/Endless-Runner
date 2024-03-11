@@ -31,14 +31,20 @@ bird_timer = 0
 interval = 3000
 min_interval = 600
 
-def draw():
+def display_tutorial(_screen):
+    _screen.fill((0, 0, 0))
+    _screen.blit(pygame.font.SysFont(None, 48).render("make the player jump with space or up", True, (255, 255, 255)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/3))
+    _screen.blit(pygame.font.SysFont(None, 48).render("pull the player to the ground with down", True, (255, 255, 255)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/2))
+    _screen.blit(pygame.font.SysFont(None, 48).render("press space to start the game", True, (255, 255, 255)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/1.5))
+
+def draw(_screen):
     sprites = pygame.sprite.Group()
     sprites.add(player)
     for i in enemies:
         sprites.add(i)
     for i in birds:
         sprites.add(i)
-    sprites.draw(screen)
+    sprites.draw(_screen)
 
 def collision():
     global removed_enemies
@@ -76,12 +82,19 @@ last_score_time = pygame.time.get_ticks()
 
 running = True
 game_over = False
-
+tutorial = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+    if tutorial:
+        display_tutorial(screen)
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE]:
+            tutorial = False
+
 
     if player.lives <= 0:
         game_over = True
@@ -89,8 +102,6 @@ while running:
     if game_over:
         if player.score > hi_score:
             hi_score = player.score
-
-        player.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
 
         # Death Screen
         screen.fill((0, 0, 0))
@@ -102,6 +113,7 @@ while running:
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_r]:
+            player.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
             player.score = 0
             player.lives = 1
             enemies = [enemy.Enemy()]
@@ -127,7 +139,7 @@ while running:
 
         player.movement()
 
-        # Adding Enemies To Be Removed And Moving Enemy
+        # Adding Enemies To Be Removed + Moving Enemy
         removed_enemies = []
         for i in enemies:
             if i.position.x < 0:
@@ -135,7 +147,7 @@ while running:
 
             i.movement()
 
-        # Adding Birds To Be Removed And Moving Bird
+        # Adding Birds To Be Removed + Moving Bird
         removed_birds = []
         for i in birds:
             if i.position.x < 0:
@@ -144,13 +156,13 @@ while running:
             i.movement()
 
         collision()
-        print(birds, "\n", bird_timer)
-        # Draw UI
+
+        # Draw Background + UI
         background.draw(screen)
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
         screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
 
-        draw()
+        draw(screen)
 
         current_time = pygame.time.get_ticks()
 
