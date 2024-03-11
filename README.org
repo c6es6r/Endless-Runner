@@ -26,6 +26,7 @@ make clean
 #+end_src
 
 ** Spielen
-Die einzige Taste die zum Spiel gebraucht wird ist die *SPACE*-Taste. Mit ihr springt der Spieler nach oben.
-Ziel des Spiels ist es den anfliegenden Gegnern auszuweichen. Für jeden Gegner, dem ausgewichen wurde, gibt es einen Punkt.
-Mit der Zeit bewegen sich die Gegner immer schneller, was das Spiel somit auch immer schwieriger macht.
+Um mit dem Spielernach oben zu springen, muss *SPACE* oder *UP* gedrückt werden. 
+Um den Spieler schneller an den Boden zu ziehen, muss *DOWN* gedrückt werden.
+Ziel des Spiels ist es den anfliegenden Gegnern auszuweichen und immer länger zu überleben. 
+Mit der Zeit kommen immer mehr und schnellere Gegner, was das Spiel somit auch immer schwieriger macht.
