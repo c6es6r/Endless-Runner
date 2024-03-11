@@ -5,10 +5,9 @@ import config
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.jump_power = 19
+        self.jump_power = 16
         self.gravity = 0.8
-        self.position = pygame.Vector2(config.SCREEN_WIDTH/6,
-                                       config.COLLISION_HEIGHT)
+        self.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
         self.velocity = pygame.Vector2()
         self.image = pygame.image.load("img/player.png")
         self.image = pygame.transform.scale(self.image, (64, 64))
@@ -26,8 +25,7 @@ class Player(pygame.sprite.Sprite):
 
         self.keys = pygame.key.get_pressed()
 
-        if (self.keys[pygame.K_UP] or self.keys[pygame.K_SPACE]) and\
-                self.jumping is False:
+        if (self.keys[pygame.K_UP] or self.keys[pygame.K_SPACE]) and self.jumping is False:
             self.velocity.y = -self.jump_power
             self.jumping = True
 
