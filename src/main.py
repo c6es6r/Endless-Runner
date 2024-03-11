@@ -9,6 +9,9 @@ import background
 
 pygame.init()
 
+pygame.display.set_caption("game")
+pygame.display.set_icon(pygame.image.load("img/icon.png"))
+
 screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT), pygame. RESIZABLE)
 clock = pygame.time.Clock()
 

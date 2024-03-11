@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
 
         self.current_keys = pygame.key.get_pressed()
 
-        if self.current_keys[pygame.K_SPACE] and self.previous_keys[pygame.K_SPACE] == False and self.position.y >= config.COLLISION_HEIGHT:
+        if (self.current_keys[pygame.K_SPACE] or self.current_keys[pygame.K_UP]) and self.previous_keys[pygame.K_SPACE] == False and self.position.y >= config.COLLISION_HEIGHT:
             self.velocity.y -= self.jump_power
 
         if self.current_keys[pygame.K_DOWN] or self.current_keys[pygame.K_s]:
