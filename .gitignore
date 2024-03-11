@@ -1,11 +1,5 @@
-.DS_Store
-.idea
-*.log
-tmp/
-
-*.py[cod]
-*.egg
-build
-htmlcov
-
-./data/scores.txt
+/data/scores.txt
+/src/__pycache__/
+/img/tree.png
+/TODO.org
+/.gitignore
