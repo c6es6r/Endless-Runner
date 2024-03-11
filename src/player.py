@@ -1,6 +1,7 @@
 import pygame
 import config
 
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -14,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.base = self.image
         self.rect = self.base.get_rect(center=self.position)
         self.jumnping = True
-        
+
         self.keys = []
 
         self.lives = 1
