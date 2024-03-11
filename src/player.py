@@ -25,7 +25,8 @@ class Player(pygame.sprite.Sprite):
 
         self.keys = pygame.key.get_pressed()
 
-        if (self.keys[pygame.K_UP] or self.keys[pygame.K_SPACE]) and self.jumping is False:
+        if (self.keys[pygame.K_UP] or self.keys[pygame.K_SPACE]) and\
+                self.jumping is False:
             self.velocity.y = -self.jump_power
             self.jumping = True
 
