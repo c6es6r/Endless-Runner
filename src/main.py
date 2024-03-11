@@ -81,6 +81,7 @@ while running:
 
         player.position = pygame.Vector2(config.SCREEN_WIDTH/6, config.COLLISION_HEIGHT)
 
+        # Death Screen
         screen.fill((0, 0, 0))
         screen.blit(pygame.font.SysFont(None, 48).render(f"HI-SCORE: {hi_score}", True, (0, 255, 0)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/4))
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {player.score}", True, (0, 0, 255)), (config.SCREEN_WIDTH/3, config.SCREEN_HEIGHT/3))
@@ -124,6 +125,7 @@ while running:
 
         collision()
 
+        # Draw UI
         background.draw(screen)
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
         screen.blit(pygame.font.SysFont(None, 48).render(f"FPS: {str(int(clock.get_fps()))}", True, (0, 0, 0)), (config.SCREEN_WIDTH-130, 10))
@@ -140,10 +142,9 @@ while running:
             player.score += 1
             last_score_time = current_time
 
-
+        # Remove Enemies
         for i in removed_enemies:
             enemies.remove(i)
-
 
         background.update()
 
