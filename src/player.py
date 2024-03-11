@@ -14,7 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (64, 64))
         self.base = self.image
         self.rect = self.base.get_rect(center=self.position)
-        self.jumnping = True
+        self.jumnping = False
 
         self.keys = []
 
