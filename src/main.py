@@ -1,11 +1,13 @@
 import pygame
 import sys
+import random
 
 import config
 
 import player
 import enemy
 import background
+import bird
 
 pygame.init()
 
@@ -16,9 +18,15 @@ screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT), py
 clock = pygame.time.Clock()
 
 player = player.Player()
+
 enemies = [enemy.Enemy()]
 removed_enemies = []
+
 background = background.Background()
+
+birds = [bird.Bird()]
+removed_birds = []
+bird_timer = 0
 
 interval = 3000
 min_interval = 600
@@ -27,6 +35,8 @@ def draw():
     sprites = pygame.sprite.Group()
     sprites.add(player)
     for i in enemies:
+        sprites.add(i)
+    for i in birds:
         sprites.add(i)
     sprites.draw(screen)
 
@@ -49,7 +59,8 @@ def spawn_enemy():
         interval = min_interval
 
     for i in enemies:
-        i.speed += 5
+        i.speed += 5  
+
 
 def get_last_hi_score():
     try:
@@ -94,6 +105,7 @@ while running:
             player.score = 0
             player.lives = 1
             enemies = [enemy.Enemy()]
+            birds = [bird.Bird()]
 
             interval = 3000
 
@@ -113,18 +125,26 @@ while running:
         if pygame.key.get_pressed()[pygame.K_q]:
             running = False
 
-        removed_enemies = []
-
         player.movement()
 
+        # Adding Enemies To Be Removed And Moving Enemy
+        removed_enemies = []
         for i in enemies:
             if i.position.x < 0:
                 removed_enemies.append(i)
 
             i.movement()
 
-        collision()
+        # Adding Birds To Be Removed And Moving Bird
+        removed_birds = []
+        for i in birds:
+            if i.position.x < 0:
+                removed_birds.append(i)
+            
+            i.movement()
 
+        collision()
+        print(birds, "\n", bird_timer)
         # Draw UI
         background.draw(screen)
         screen.blit(pygame.font.SysFont(None, 48).render(f"SCORE: {str(player.score)}", True, (0, 0, 0)), (10, 10))
@@ -134,10 +154,17 @@ while running:
 
         current_time = pygame.time.get_ticks()
 
+        # Spawn Enemy
         if current_time - last_spawn_time >= interval:
             spawn_enemy()
             last_spawn_time = current_time
+        
+        # Spawn Bird
+        if bird_timer >= random.randint(200, 400):
+            birds.append(bird.Bird())
+            bird_timer = 0
 
+        # Increase Score
         if current_time - last_score_time >= 500:
             player.score += 1
             last_score_time = current_time
@@ -145,6 +172,12 @@ while running:
         # Remove Enemies
         for i in removed_enemies:
             enemies.remove(i)
+
+        # Remove Birds
+        for i in removed_birds:
+            birds.remove(i)
+
+        bird_timer += 1
 
         background.update()
 
