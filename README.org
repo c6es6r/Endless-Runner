@@ -1,32 +1,21 @@
 #+title: Readme
 #+author: c6es6r
 
-* Über Dieses Projekt
-Dieses Projekt wird im Rahmen einer Projekt Arbeit in der Schule erstellt.
-Ab dem 12.03.2024 ist es jedem freigestellt, sich an der Entwicklung zu beteiligen.
+* Execute
+** Dependencies
+The only needed dependency is *pygame*.
 
-* Nutzung
-** Ausführen
-*** Dependencies
-Das einzige benötigte Paket ist *pygame*.
-
-*** Spiel Starten
-Das Spiel kann einfach mit dem *make* Befehl ausgeführt werden.
-Falls dieser nicht funktioniert, kann der folgende Befehl genutzt werden:
+** Run The Game
+The game can easily be run by the *make* command. In case it doesn't work execute the following bit of code:
 #+begin_src shell
 python3 src/main.py
 #+end_src
 
-Gegebenenfalls muss die *3* weggelassen werden.
+You might need to remove the *3*.
 
-** Aufräumen
-Um die beim spielen erzeugten Cache-Dateien zu entfernen, einfach folgenden Befehl nutzen.
+* Clean Up
+To remove the cache file simply execute the following command:
 #+begin_src shell
 make clean
 #+end_src
 
-** Spielen
-Um mit dem Spielernach oben zu springen, muss *SPACE* oder *UP* gedrückt werden. 
-Um den Spieler schneller an den Boden zu ziehen, muss *DOWN* gedrückt werden.
-Ziel des Spiels ist es den anfliegenden Gegnern auszuweichen und immer länger zu überleben. 
-Mit der Zeit kommen immer mehr und schnellere Gegner, was das Spiel somit auch immer schwieriger macht.
